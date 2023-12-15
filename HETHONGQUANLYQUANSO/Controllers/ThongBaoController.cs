@@ -4,7 +4,7 @@ namespace HETHONGQUANLYQUANSO.Controllers
 {
     public class ThongBaoController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Statistics()
         {
             return View();
         }

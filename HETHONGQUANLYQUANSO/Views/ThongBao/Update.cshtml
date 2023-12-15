@@ -6,10 +6,10 @@
 
 <div class="app" style="display: flex;">
 	@await Component.InvokeAsync("Menu")
-	<div class="card" style="width: 100%">
+	<div class="wrapper" style="width: 100%;">
 		<div class="card card-primary">
 			<div class="card-header" style="background-color: #004400;">
-				<h3 class="card-title">Cập nhật thông tin quân nhân</h3>
+				<h3 class="card-title">Cập nhật thông báo</h3>
 			</div>
 			<!-- /.card-header -->
 			<!-- form start -->
@@ -17,35 +17,35 @@
 				<div class="card-body">
 					<div class="card-form" style="display: flex; justify-content: space-between;">
 						<div class="form-group" style="flex:1; margin-right: 20px;">
-							<label for="exampleInputEmail1">Mã quân nhân</label>
-							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập mã quân nhân">
+							<label for="exampleInputEmail1">Mã thông báo</label>
+							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập mã thông báo">
 						</div>
 
 						<div class="form-group" style="flex: 1; margin-right: 20px;">
-							<label for="exampleInputPassword1">Họ tên</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập họ tên">
+							<label for="exampleInputPassword1">Tên thông báo</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tên thông báo">
 						</div>
 
 						<div class="form-group" style="flex: 1; ">
-							<label for="exampleInputPassword1">Cấp bậc</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập cấp bậc">
+							<label for="exampleInputPassword1">Nội dung thông báo</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nội dung thông báo">
 						</div>
 					</div>
 
 					<div class="card-form" style="display: flex; justify-content: space-between;">
 						<div class="form-group" style="flex: 1; margin-right: 20px;">
-							<label for="exampleInputPassword1">Chức vụ</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập chức vụ">
+							<label for="exampleInputPassword1">Mã đơn vị</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập mã đơn vị">
 						</div>
 
 						<div class="form-group" style="flex: 1; margin-right: 20px; ">
-							<label for="exampleInputPassword1">Đơn vị</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập đơn vị">
+							<label for="exampleInputPassword1">Người viết</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tên người viết">
 						</div>
 
 						<div class="form-group" style="flex:1;">
-							<label for="exampleInputPassword1">Ghi chú</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập ghi chú">
+							<label for="exampleInputPassword1">Ngày</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập ngày">
 						</div>
 
 					</div>
@@ -60,7 +60,7 @@
 				<!-- /.card-body -->
 			</form>
 		</div>
-		@await Component.InvokeAsync("QuanNhan")
 
+		@await Component.InvokeAsync("ThongBao")
 	</div>
 </div>
