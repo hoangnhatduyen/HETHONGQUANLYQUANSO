@@ -1,0 +1,48 @@
+﻿
+@{
+	Layout ="_Layout";
+	ViewData["Title"] = "Login";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div class="login-box" style="width: 400px; margin-top: 250px; margin-left: 600px;">
+	<!-- /.login-logo -->
+	<div class="card" style="width: 400px;">
+		<div class="card-body login-card-body" style="width: 400px" ;>
+			<p class="login-box-msg" style="font-weight:600;">HỌC VIỆN KỸ THUẬT QUÂN SỰ</p>
+			<p class="login-box-msg" style="font-weight:600;">HỆ THỐNG QUẢN LÝ QUÂN SỐ CẤP TIỂU ĐOÀN</p>
+			<form action="#" method="post">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Tên đăng nhập" style="border-right: 1px solid #ced4da;">
+				</div>
+				<div class="input-group mb-3">
+					<input type="password" class="form-control" placeholder="Mật khẩu" style="border-right: 1px solid #ced4da;">
+				</div>
+				<div class="row">
+					<div class="col-8">
+						<div class="icheck-primary">
+							<input type="checkbox" id="remember">
+							<label for="remember">
+								Lưu mật khẩu
+							</label>
+						</div>
+					</div>
+					<!-- /.col -->
+					<div class="col-4">
+						<button type="submit" class="btn btn-primary btn-block" style="background-color: #004400">Đăng nhập</button>
+					</div>
+					<!-- /.col -->
+				</div>
+			</form>
+			<!-- /.social-auth-links -->
+		</div>
+	</div>
+	<!-- /.login-card-body -->
+</div>
+
