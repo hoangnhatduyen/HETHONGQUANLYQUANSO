@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\BaoCaoQuanSo\" />
     <Folder Include="Views\ThongBao\" />
   </ItemGroup>
 
