@@ -5,8 +5,9 @@ namespace HETHONGQUANLYQUANSO.ViewComponents
     public class MenuViewComponent : ViewComponent
 
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
+            // Logic của bạn ở đây
             return View();
         }
 
