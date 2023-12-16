@@ -6,7 +6,27 @@ namespace HETHONGQUANLYQUANSO.Controllers
     {
         public IActionResult Index()
         {
-            return View("Index");
+            return View();
+        }
+
+        public IActionResult BaoCaoQuanSoNgay()
+        {
+            return View();
+        }
+
+        public IActionResult ChiTietQuanSoVang()
+        {
+            return View();
+        }
+
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        public IActionResult Statistics()
+        {
+            return View();
         }
     }
 }
