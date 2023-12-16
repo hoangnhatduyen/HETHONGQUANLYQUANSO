@@ -15,8 +15,9 @@ namespace HETHONGQUANLYQUANSO.Controllers
         public IActionResult Login(NguoiDung nguoiDung)
         {
             HETHONGQUANLYQUANSOContext HTQLQSContext = new HETHONGQUANLYQUANSOContext();
-            var userFromDb = HTQLQSContext.NguoiDungs
-                .FirstOrDefault(u => u.TenDangNhap == nguoiDung.TenDangNhap && u.MatKhau == nguoiDung.MatKhau);
+            var userFromDb = HTQLQSContext.NguoiDungs.FirstOrDefault(u => u.TenDangNhap == nguoiDung.TenDangNhap && u.MatKhau == nguoiDung.MatKhau);
+
+            Console.WriteLine($"TenDangNhap: {nguoiDung.TenDangNhap}, MatKhau: {nguoiDung.MatKhau}");
 
             if (userFromDb != null)
             {

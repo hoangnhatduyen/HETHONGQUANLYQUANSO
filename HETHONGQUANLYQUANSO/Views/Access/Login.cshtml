@@ -1,4 +1,4 @@
-﻿
+﻿@model HETHONGQUANLYQUANSO.Models.NguoiDung
 @{
 	Layout ="_Layout";
 	ViewData["Title"] = "Login";
@@ -17,12 +17,12 @@
 		<div class="card-body login-card-body" style="width: 400px" ;>
 			<p class="login-box-msg" style="font-weight:600;">HỌC VIỆN KỸ THUẬT QUÂN SỰ</p>
 			<p class="login-box-msg" style="font-weight:600;">HỆ THỐNG QUẢN LÝ QUÂN SỐ CẤP TIỂU ĐOÀN</p>
-			<form action="#" method="post">
+			<form asp-action="Login" method="post">
 				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="Tên đăng nhập" style="border-right: 1px solid #ced4da;">
+					<input asp-for="TenDangNhap" type="text" class="form-control" placeholder="Tên đăng nhập" style="border-right: 1px solid #ced4da;">
 				</div>
 				<div class="input-group mb-3">
-					<input type="password" class="form-control" placeholder="Mật khẩu" style="border-right: 1px solid #ced4da;">
+					<input asp-for="MatKhau" type="password" class="form-control" placeholder="Mật khẩu" style="border-right: 1px solid #ced4da;">
 				</div>
 				<div class="row">
 					<div class="col-8">
