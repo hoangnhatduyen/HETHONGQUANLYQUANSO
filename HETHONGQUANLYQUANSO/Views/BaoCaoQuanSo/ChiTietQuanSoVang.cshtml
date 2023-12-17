@@ -1,5 +1,99 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+	Layout = "_Layout";
+	ViewData["Title"] = "ChiTietQuanSoVang";
 }
+
+<div class="app" style="display: flex;">
+	@await Component.InvokeAsync("Menu")
+	<div class="card" style="width: 100%">
+		<div class="card card-primary">
+			<div class="card-header" style="background-color: #004400;">
+				<h3 class="card-title">Chi tiết quân số vắng</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form>
+				<div class="card-body">
+					<div class="card-form" style="display: flex; justify-content: space-between;">
+						<div class="form-group" style="flex:1; margin-right: 20px;">
+							<label for="exampleInputEmail1">Mã chi tiết</label>
+							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập mã chi tiết">
+						</div>
+
+						<div class="form-group" style="flex: 1; margin-right: 20px;">
+							<label for="exampleInputPassword1">Mã báo cáo</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập mã báo cáo">
+						</div>
+						<div class="form-group" style="flex: 1;">
+							<label for="exampleInputPassword1">Mã quân nhân</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập mã quân nhân">
+						</div>
+					</div>
+
+					<div class="card-form" style="display: flex; justify-content: space-between;">
+
+
+						<div class="form-group" style="flex: 1; margin-right: 20px; ">
+							<label for="exampleInputPassword1">Tên quân nhân</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tên quân nhân">
+						</div>
+
+						<div class="form-group" style="flex: 1; margin-right: 20px; ">
+							<label for="exampleInputPassword1">Mã lý do</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập mã lý do">
+						</div>
+
+						<div class="form-group" style="flex:1;">
+							<label for="exampleInputPassword1">Ghi chú</label>
+							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập ghi chú">
+						</div>
+					</div>
+
+				</div>
+				<div class="group-btn" style="display: flex; justify-content: space-between;">
+					<button type="button" class="btn btn-block btn-success btn-lg" style="width: 150px; height: 50px; margin-left: 20px; margin-bottom: 0;">Thêm</button>
+					<button type="button" class="btn btn-block btn-warning btn-lg" style="width: 150px; height: 50px; margin-bottom: 20px;">Sửa</button>
+					<button type="button" class="btn btn-block btn-danger btn-lg" style="width: 150px; height: 50px; margin-right: 20px; margin-bottom: 20px;">Xóa</button>
+				</div>
+
+				<!-- /.card-body -->
+			</form>
+		</div>
+
+		<div class="card-body">
+			<div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row">
+					<div class="col-sm-12">
+						<table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+							<thead>
+								<tr>
+									<th class="sorting sorting_desc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="descending">Mã chi tiết</th>
+									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Mã báo cáo</th>
+									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Mã quân nhân</th>
+									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tên quân nhân</th>
+									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Mã lý do</th>
+									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS : activate to sort column ascending">Tên lý do</th>
+									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Abc: activate to sort column ascending">Ghi chú</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="even">
+									<td class="dtr-control sorting_1" tabindex="0"></td>
+									<td>
+									</td>
+									<td class=""></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div><div class="row"><div class="col-sm-12 col-md-5"></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Trang trước</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Trang sau</a></li></ul></div></div></div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
