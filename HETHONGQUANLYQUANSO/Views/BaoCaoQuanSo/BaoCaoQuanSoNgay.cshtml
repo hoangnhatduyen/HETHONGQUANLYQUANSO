@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<HETHONGQUANLYQUANSO.Models.BaoCaoQuanSo>
+@{
 	Layout = "_Layout";
 	ViewData["Title"] = "BaoCaoQuanSoNgay";
 }
@@ -12,52 +13,52 @@
 			</div>
 			<!-- /.card-header -->
 			<!-- form start -->
-			<form>
+			<form id="formThemBaoCao" method="post" asp-action="ProcessData">
 				<div class="card-body">
 					<div class="card-form" style="display: flex; justify-content: space-between;">
 						<div class="form-group" style="flex:1; margin-right: 20px;">
-							<label for="exampleInputEmail1">Mã báo cáo</label>
-							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập mã báo cáo">
+							<label for="maBaoCao">Mã báo cáo</label>
+							<input type="text" class="form-control" id="maBaoCao" placeholder="Nhập mã báo cáo">
 						</div>
 
 						<div class="form-group" style="flex: 1; margin-right: 20px;">
-							<label for="exampleInputPassword1">Mã đơn vị</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập mã đơn vị">
+							<label for="maDonVi">Mã đơn vị</label>
+							<input type="text" class="form-control" id="maDonVi" placeholder="Nhập mã đơn vị">
 						</div>
 
 						<div class="form-group" style="flex: 1; ">
-							<label for="exampleInputPassword1">Người duyệt</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập người duyệt">
+							<label for="nguoiDuyet">Người duyệt</label>
+							<input type="text" class="form-control" id="nguoiDuyet" placeholder="Nhập người duyệt">
 						</div>
 					</div>
 
 					<div class="card-form" style="display: flex; justify-content: space-between;">
 						<div class="form-group" style="flex: 1; margin-right: 20px;">
-							<label for="exampleInputPassword1">Tổng quân số</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tổng quân số">
+							<label for="tongQuanSo">Tổng quân số</label>
+							<input type="text" class="form-control" id="tongQuanSo" placeholder="Nhập tổng quân số">
 						</div>
 
 						<div class="form-group" style="flex: 1; margin-right: 20px; ">
-							<label for="exampleInputPassword1">Có mặt</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập quân số có mặt">
+							<label for="coMat">Có mặt</label>
+							<input type="text" class="form-control" id="coMat" placeholder="Nhập quân số có mặt">
 						</div>
 
 						<div class="form-group" style="flex: 1; margin-right: 20px; ">
-							<label for="exampleInputPassword1">Vắng</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập số lượng vắng">
+							<label for="vang">Vắng</label>
+							<input type="text" class="form-control" id="vang" placeholder="Nhập số lượng vắng">
 						</div>
 
 						<div class="form-group" style="flex:1;">
-							<label for="exampleInputPassword1">Ngày</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập ngày">
+							<label for="ngay">Ngày</label>
+							<input type="text" class="form-control" id="ngay" placeholder="Nhập ngày">
 						</div>
 					</div>
 
 				</div>
 				<div class="group-btn" style="display: flex; justify-content: space-between;">
-					<button type="button" class="btn btn-block btn-success btn-lg" style="width: 150px; height: 50px; margin-left: 20px; margin-bottom: 0;">Thêm</button>
-					<button type="button" class="btn btn-block btn-warning btn-lg" style="width: 150px; height: 50px; margin-bottom: 20px;">Sửa</button>
-					<button type="button" class="btn btn-block btn-danger btn-lg" style="width: 150px; height: 50px; margin-right: 20px; margin-bottom: 20px;">Xóa</button>
+					<button name="action" value="them" id="btnThem" type="submit" class="btn btn-block btn-success btn-lg" style="width: 150px; height: 50px; margin-left: 20px; margin-bottom: 0;">Thêm</button>
+					<button name="action" value="sua" id="btnSua" type="submit" class="btn btn-block btn-warning btn-lg" style="width: 150px; height: 50px; margin-bottom: 20px;">Sửa</button>
+					<button name="action" value="xoa" id="btnXoa" type="submit" class="btn btn-block btn-danger btn-lg" style="width: 150px; height: 50px; margin-right: 20px; margin-bottom: 20px;">Xóa</button>
 				</div>
 
 				<!-- /.card-body -->
@@ -71,26 +72,30 @@
 						<table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
 							<thead>
 								<tr>
-									<th class="sorting sorting_desc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending" aria-sort="descending">Mã báo cáo</th>
-									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Mã đơn vị</th>
-									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tổng quân số</th>
-									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Có mặt</th>
-									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Vắng</th>
-									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Abc: activate to sort column ascending">Người duyệt</th>
-									<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Ngày</th>
+							<thead>
+								<tr>
+									<th>Mã báo cáo</th>
+									<th>Mã đơn vị</th>
+									<th>Tổng quân số</th>
+									<th>Có mặt</th>
+									<th>Vắng</th>
+									<th>Người duyệt</th>
+									<th>Ngày</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="even">
-									<td class="dtr-control sorting_1" tabindex="0"></td>
-									<td>
-									</td>
-									<td class=""></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
+								@foreach (var baoCao in Model)
+								{
+									<tr>
+										<td id="maBaoCao">@baoCao.MaBaoCao</td>
+										<td id="maDonVi">@baoCao.MaDonVi</td>
+										<td id="tongQuanSo">@baoCao.TongQuanSo</td>
+										<td id="coMat">@baoCao.CoMat</td>
+										<td id="vang">@baoCao.Vang</td>
+										<td id="nguoiDuyet">@baoCao.NguoiDuyet</td>
+										<td id="ngay">@baoCao.Ngay</td>
+									</tr>
+								}
 							</tbody>
 						</table>
 					</div>
@@ -101,3 +106,136 @@
 
 	</div>
 </div>
+
+<script>
+	$(document).ready(function () {
+		$('#example2 tbody').on('click', 'tr', function () {
+			var cells = $(this).find('td');
+			var maBaoCao = cells.eq(0).text();
+			var maDonVi = cells.eq(1).text();
+			var tongQuanSo = cells.eq(2).text();
+			var coMat = cells.eq(3).text();
+			var vang = cells.eq(4).text();
+			var nguoiDuyet = cells.eq(5).text();
+			var ngay = cells.eq(6).text();
+
+			// Gắn giá trị lấy được vào các ô trong form
+			$('#maBaoCao').val(maBaoCao);
+			$('#maDonVi').val(maDonVi);
+			$('#tongQuanSo').val(tongQuanSo);
+			$('#coMat').val(coMat);
+			$('#vang').val(vang);
+			$('#nguoiDuyet').val(nguoiDuyet);
+			$('#ngay').val(ngay);
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function () {
+		// Lắng nghe sự kiện nhấn nút "Thêm"
+		$('#btnThem').click(function () {
+			// Lấy dữ liệu từ các ô nhập liệu
+			var maBaoCao = $('#maBaoCao').val();
+			var maDonVi = $('#maDonVi').val();
+			var tongQuanSo = $('#tongQuanSo').val();
+			var coMat = $('#coMat').val();
+			var vang = $('#vang').val();
+			var nguoiDuyet = $('#nguoiDuyet').val();
+			var ngay = $('#ngay').val();
+
+			// Gửi dữ liệu đến server
+			$.ajax({
+				type: 'POST',
+				url: '/BaoCaoQuanSo/ProcessData', // Điều chỉnh tên Action nếu cần
+				data: {
+					MaBaoCao: maBaoCao,
+					MaDonVi: maDonVi,
+					TongQuanSo: tongQuanSo,
+					CoMat: coMat,
+					Vang: vang,
+					NguoiDuyet: nguoiDuyet,
+					Ngay: ngay,
+					action: 'them'
+
+					// Gửi các giá trị còn lại
+				},
+				success: function (response) {
+					// Xử lý kết quả từ server nếu cần
+					console.log(response);
+					// Cập nhật UI hoặc thực hiện các bước khác
+				},
+				error: function (error) {
+					// Xử lý lỗi nếu có
+					console.log(error);
+				}
+			});
+		});
+	});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	$(document).ready(function () {
+		// Sự kiện khi click vào nút "Sửa"
+		$('#btnSua').click(function () {
+			// Lấy dữ liệu từ các ô nhập liệu
+			var maBaoCao = $('#maBaoCao').val();
+			var maDonVi = $('#maDonVi').val();
+			var tongQuanSo = $('#tongQuanSo').val();
+			var coMat = $('#coMat').val();
+			var vang = $('#vang').val();
+			var nguoiDuyet = $('#nguoiDuyet').val();
+			var ngay = $('#ngay').val();
+
+			// Gửi dữ liệu đến server để thực hiện chức năng sửa
+			$.ajax({
+				type: 'POST',
+				url: '/BaoCaoQuanSo/ProcessData',
+				data: {
+					MaBaoCao: maBaoCao,
+					MaDonVi: maDonVi,
+					TongQuanSo: tongQuanSo,
+					CoMat: coMat,
+					Vang: vang,
+					NguoiDuyet: nguoiDuyet,
+					Ngay: ngay,
+					action: 'sua'
+					
+				},
+				success: function (response) {
+					// Xử lý kết quả từ server nếu cần
+					console.log(response);
+				},
+				error: function (error) {
+					// Xử lý lỗi nếu có
+					console.log(error);
+				}
+			});
+		});
+
+
+		$('#btnXoa').click(function () {
+			// Lấy dữ liệu từ các ô nhập liệu
+			var maBaoCao = $('#maBaoCao').val();
+
+			// Gửi dữ liệu đến server để thực hiện chức năng xóa
+			$.ajax({
+				type: 'POST',
+				url: '/BaoCaoQuanSo/ProcessData',
+				data: {
+					MaBaoCao: maBaoCao,
+					action: 'xoa'
+				},
+				success: function (response) {
+					// Xử lý kết quả từ server nếu cần
+					console.log(response);
+				},
+				error: function (error) {
+					// Xử lý lỗi nếu có
+					console.log(error);
+				}
+			});
+		});
+	});
+</script>

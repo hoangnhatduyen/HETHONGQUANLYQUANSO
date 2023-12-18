@@ -146,14 +146,16 @@
             // Gửi dữ liệu đến server
             $.ajax({
                 type: 'POST',
-                url: '/QuanNhan/UpdateQuanNhan',
+				url: '/QuanNhan/ProcessData',
+
                 data: {
                     MaQuanNhan: maQuanNhan,
                     HoVaTen: hoTen,
                     CapBac: capBac,
                     MaChucVu: chucVu,
                     MaDonVi: donVi,
-                    GhiChu: ghiChu
+					GhiChu: ghiChu,
+					action: 'sua'
                 },
                 success: function (response) {
                     // Xử lý kết quả từ server nếu cần
@@ -185,9 +187,10 @@
             // Gửi dữ liệu đến server
             $.ajax({
                 type: 'POST',
-                url: '/QuanNhan/DeleteQuanNhan',
+                url: '/QuanNhan/ProcessData',
                 data: {
-                    MaQuanNhan: maQuanNhan
+					MaQuanNhan: maQuanNhan,
+					action: 'xoa'
                 },
                 success: function (response) {
                     // Xử lý kết quả từ server nếu cần
