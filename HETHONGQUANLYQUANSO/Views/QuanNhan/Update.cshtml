@@ -1,6 +1,5 @@
-﻿
-@{
-	Layout = "_Layout";
+﻿@model List<HETHONGQUANLYQUANSO.Models.QuanNhan>
+@{Layout = "_Layout";
 	ViewData["Title"] = "Update";
 }
 
@@ -13,48 +12,48 @@
 			</div>
 			<!-- /.card-header -->
 			<!-- form start -->
-			<form>
+			<form id="updateForm" method="post" asp-action="ProcessData">
 				<div class="card-body">
 					<div class="card-form" style="display: flex; justify-content: space-between;">
 						<div class="form-group" style="flex:1; margin-right: 20px;">
-							<label for="exampleInputEmail1">Mã quân nhân</label>
-							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập mã quân nhân">
+							<label for="maQuanNhan">Mã quân nhân </label>
+							<input type="text" class="form-control" id="maQuanNhan" name="maQuanNhan" placeholder="Nhập mã quân nhân">
 						</div>
 
 						<div class="form-group" style="flex: 1; margin-right: 20px;">
-							<label for="exampleInputPassword1">Họ tên</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập họ tên">
+							<label for="hoTen">Họ tên</label>
+							<input type="text" class="form-control" id="hoTen" name="hoTen" placeholder="Nhập họ tên">
 						</div>
 
 						<div class="form-group" style="flex: 1; ">
-							<label for="exampleInputPassword1">Cấp bậc</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập cấp bậc">
+							<label for="capBac">Cấp bậc</label>
+							<input type="text" class="form-control" id="capBac" name="capBac" placeholder="Nhập cấp bậc">
 						</div>
 					</div>
 
 					<div class="card-form" style="display: flex; justify-content: space-between;">
 						<div class="form-group" style="flex: 1; margin-right: 20px;">
-							<label for="exampleInputPassword1">Chức vụ</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập chức vụ">
+							<label for="chucVu">Chức vụ</label>
+							<input type="text" class="form-control" id="chucVu" name="chucVu" placeholder="Nhập chức vụ">
 						</div>
 
 						<div class="form-group" style="flex: 1; margin-right: 20px; ">
-							<label for="exampleInputPassword1">Đơn vị</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập đơn vị">
+							<label for="donVi">Đơn vị</label>
+							<input type="text" class="form-control" id="donVi" name="donVi" placeholder="Nhập đơn vị">
 						</div>
 
 						<div class="form-group" style="flex:1;">
-							<label for="exampleInputPassword1">Ghi chú</label>
-							<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập ghi chú">
+							<label for="ghiChu">Ghi chú</label>
+							<input type="text" class="form-control" id="ghiChu" name="ghiChu" placeholder="Nhập ghi chú">
 						</div>
 
 					</div>
 
 				</div>
 				<div class="group-btn" style="display: flex; justify-content: space-between;">
-					<button type="button" class="btn btn-block btn-success btn-lg" style="width: 150px; height: 50px; margin-left: 20px; margin-bottom: 0;">Thêm</button>
-					<button type="button" class="btn btn-block btn-warning btn-lg" style="width: 150px; height: 50px; margin-bottom: 20px;">Sửa</button>
-					<button type="button" class="btn btn-block btn-danger btn-lg" style="width: 150px; height: 50px; margin-right: 20px; margin-bottom: 20px;">Xóa</button>
+					<button id="btnThem" type="submit" name="action" value="them" class="btn btn-block btn-success btn-lg" style="width: 150px; height: 50px; margin-left: 20px; margin-bottom: 0;">Thêm</button>
+					<button type="submit" name="action" value="sua" class="btn btn-block btn-warning btn-lg" style="width: 150px; height: 50px; margin-bottom: 20px;">Sửa</button>
+					<button type="submit" name="action" value="xoa" class="btn btn-block btn-danger btn-lg" style="width: 150px; height: 50px; margin-right: 20px; margin-bottom: 20px;">Xóa</button>
 				</div>
 
 				<!-- /.card-body -->
@@ -64,3 +63,66 @@
 
 	</div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$('#example2 tbody').on('click', 'tr', function () {
+			// Lấy dữ liệu từ hàng được chọn
+			var maQuanNhan = $(this).find('td:eq(0)').text();
+			var hoTen = $(this).find('td:eq(1)').text();
+			var capBac = $(this).find('td:eq(2)').text();
+			var chucVu = $(this).find('td:eq(3)').text();
+			var donVi = $(this).find('td:eq(4)').text();
+			var ghiChu = $(this).find('td:eq(5)').text();
+
+			// Điền dữ liệu vào các ô trong form
+			$('#maQuanNhan').val(maQuanNhan);
+			$('#hoTen').val(hoTen);
+			$('#capBac').val(capBac);
+			$('#chucVu').val(chucVu);
+			$('#donVi').val(donVi);
+			$('#ghiChu').val(ghiChu);
+
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function () {
+		// Lắng nghe sự kiện nhấn nút "Thêm"
+		$('#btnThem').click(function () {
+			// Lấy dữ liệu từ các ô nhập liệu
+			var maQuanNhan = $('#maQuanNhan').val();
+			var hoTen = $('#hoTen').val();
+			var capBac = $('#capBac').val();
+			var chucVu = $('#chucVu').val();
+			var donVi = $('#donVi').val();
+			var ghiChu = $('#ghiChu').val();
+
+			// Gửi dữ liệu đến server
+			$.ajax({
+				type: 'POST',
+				url: '/QuanNhan/ProcessData',
+				data: {
+					MaQuanNhan: maQuanNhan,
+					HoVaTen: hoTen,
+					CapBac: capBac,
+					MaChucVu: chucVu,
+					MaDonVi: donVi,
+					GhiChu: ghiChu,
+					action: 'them' // Thêm action để xác định hành động cần thực hiện
+				},
+				success: function (response) {
+					// Xử lý kết quả từ server nếu cần
+					console.log(response);
+					// Cập nhật UI hoặc thực hiện các bước khác
+				},
+				error: function (error) {
+					// Xử lý lỗi nếu có
+					console.log(error);
+				}
+			});
+		});
+	});
+</script>

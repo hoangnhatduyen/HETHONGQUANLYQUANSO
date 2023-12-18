@@ -1,4 +1,7 @@
-﻿namespace HETHONGQUANLYQUANSO.Models
+﻿using HETHONGQUANLYQUANSO.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace HETHONGQUANLYQUANSO.Models
 {
     public partial class QuanNhan
     {
@@ -23,5 +26,6 @@
         public virtual ICollection<BaoCaoQuanSo> BaoCaoQuanSos { get; set; }
         public virtual ICollection<ChiTietQuanSoVang> ChiTietQuanSoVangs { get; set; }
         public virtual ICollection<ThongBao> ThongBaos { get; set; }
+
     }
 }
