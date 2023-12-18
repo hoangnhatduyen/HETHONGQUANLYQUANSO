@@ -52,8 +52,8 @@
 				</div>
 				<div class="group-btn" style="display: flex; justify-content: space-between;">
 					<button id="btnThem" type="submit" name="action" value="them" class="btn btn-block btn-success btn-lg" style="width: 150px; height: 50px; margin-left: 20px; margin-bottom: 0;">Thêm</button>
-					<button type="submit" name="action" value="sua" class="btn btn-block btn-warning btn-lg" style="width: 150px; height: 50px; margin-bottom: 20px;">Sửa</button>
-					<button type="submit" name="action" value="xoa" class="btn btn-block btn-danger btn-lg" style="width: 150px; height: 50px; margin-right: 20px; margin-bottom: 20px;">Xóa</button>
+					<button id="btnSua" type ="submit" name="action" value="sua" class="btn btn-block btn-warning btn-lg" style="width: 150px; height: 50px; margin-bottom: 20px;">Sửa</button>
+					<button id="btnXoa" type="submit" name="action" value="xoa" class="btn btn-block btn-danger btn-lg" style="width: 150px; height: 50px; margin-right: 20px; margin-bottom: 20px;">Xóa</button>
 				</div>
 
 				<!-- /.card-body -->
@@ -91,38 +91,120 @@
 <script>
 	$(document).ready(function () {
 		// Lắng nghe sự kiện nhấn nút "Thêm"
+		var isDataSent = false;
 		$('#btnThem').click(function () {
-			// Lấy dữ liệu từ các ô nhập liệu
-			var maQuanNhan = $('#maQuanNhan').val();
-			var hoTen = $('#hoTen').val();
-			var capBac = $('#capBac').val();
-			var chucVu = $('#chucVu').val();
-			var donVi = $('#donVi').val();
-			var ghiChu = $('#ghiChu').val();
+			if (!isDataSent) {
+				isDataSent = true;
+				// Lấy dữ liệu từ các ô nhập liệu
+				var maQuanNhan = $('#maQuanNhan').val();
+				var hoTen = $('#hoTen').val();
+				var capBac = $('#capBac').val();
+				var chucVu = $('#chucVu').val();
+				var donVi = $('#donVi').val();
+				var ghiChu = $('#ghiChu').val();
 
-			// Gửi dữ liệu đến server
-			$.ajax({
-				type: 'POST',
-				url: '/QuanNhan/ProcessData',
-				data: {
-					MaQuanNhan: maQuanNhan,
-					HoVaTen: hoTen,
-					CapBac: capBac,
-					MaChucVu: chucVu,
-					MaDonVi: donVi,
-					GhiChu: ghiChu,
-					action: 'them' // Thêm action để xác định hành động cần thực hiện
-				},
-				success: function (response) {
-					// Xử lý kết quả từ server nếu cần
-					console.log(response);
-					// Cập nhật UI hoặc thực hiện các bước khác
-				},
-				error: function (error) {
-					// Xử lý lỗi nếu có
-					console.log(error);
-				}
-			});
+				// Gửi dữ liệu đến server
+				$.ajax({
+					type: 'POST',
+					url: '/QuanNhan/ProcessData',
+					data: {
+						MaQuanNhan: maQuanNhan,
+						HoVaTen: hoTen,
+						CapBac: capBac,
+						MaChucVu: chucVu,
+						MaDonVi: donVi,
+						GhiChu: ghiChu,
+						action: 'them' // Thêm action để xác định hành động cần thực hiện
+					},
+					success: function (response) {
+						// Xử lý kết quả từ server nếu cần
+						console.log(response);
+						// Cập nhật UI hoặc thực hiện các bước khác
+					},
+					error: function (error) {
+						// Xử lý lỗi nếu có
+						console.log(error);
+					}
+				});
+			} // Thêm ngoặc đóng ở đây
 		});
 	});
 </script>
+
+<script>
+    $(document).ready(function () {
+        // Lắng nghe sự kiện nhấn nút "Sửa"
+        $('#btnSua').click(function () {
+            // Lấy dữ liệu từ các ô nhập liệu
+            var maQuanNhan = $('#maQuanNhan').val();
+            var hoTen = $('#hoTen').val();
+            var capBac = $('#capBac').val();
+            var chucVu = $('#chucVu').val();
+            var donVi = $('#donVi').val();
+            var ghiChu = $('#ghiChu').val();
+
+            // Gửi dữ liệu đến server
+            $.ajax({
+                type: 'POST',
+                url: '/QuanNhan/UpdateQuanNhan',
+                data: {
+                    MaQuanNhan: maQuanNhan,
+                    HoVaTen: hoTen,
+                    CapBac: capBac,
+                    MaChucVu: chucVu,
+                    MaDonVi: donVi,
+                    GhiChu: ghiChu
+                },
+                success: function (response) {
+                    // Xử lý kết quả từ server nếu cần
+                    console.log(response);
+                    if (response.success) {
+                        alert(response.message);
+                    } else {
+                        alert("Lỗi: " + response.message);
+                    }
+                },
+                error: function (error) {
+                    // Xử lý lỗi nếu có
+                    console.log(error);
+                    alert("Lỗi khi thực hiện yêu cầu!");
+                }
+            });
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Lắng nghe sự kiện nhấn nút "Xóa"
+        $('#btnXoa').click(function () {
+            // Lấy mã quân nhân từ ô nhập liệu
+            var maQuanNhan = $('#maQuanNhan').val();
+
+            // Gửi dữ liệu đến server
+            $.ajax({
+                type: 'POST',
+                url: '/QuanNhan/DeleteQuanNhan',
+                data: {
+                    MaQuanNhan: maQuanNhan
+                },
+                success: function (response) {
+                    // Xử lý kết quả từ server nếu cần
+                    console.log(response);
+                    if (response.success) {
+                        alert(response.message);
+                    } else {
+                        alert("Lỗi: " + response.message);
+                    }
+                },
+                error: function (error) {
+                    // Xử lý lỗi nếu có
+                    console.log(error);
+                    alert("Lỗi khi thực hiện yêu cầu!");
+                }
+            });
+        });
+    });
+</script>
+
